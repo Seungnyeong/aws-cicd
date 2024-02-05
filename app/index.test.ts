@@ -6,7 +6,7 @@ import * as redis from "redis";
 let app: App;
 let client: RedisClientType;
 
-const REDIS_URL = "redis://:abcd1234@127.0.0.1:6379";
+const REDIS_URL = "redis://:test_env@127.0.0.1:6380";
 
 beforeAll(async () => {
   client = redis.createClient({
