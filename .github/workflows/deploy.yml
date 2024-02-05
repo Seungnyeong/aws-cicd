@@ -29,6 +29,7 @@ jobs:
             npm run build || exit 1
             sudo pkill node || exit 1
             sudo npm start & npx wait-on http://localhost:3000
+            exit
           "
         env:
           CI: true
