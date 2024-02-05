@@ -28,6 +28,6 @@ jobs:
             npm install || exit 1
             npm run build || exit 1
             sudo pkill node || exit 1
-            sudo npm run start & npx wait-on -t 5000 tcp:80
+            sudo nohup npm run start > /dev/null > 2&1 &
             exit
           "
