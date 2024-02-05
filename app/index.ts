@@ -1,11 +1,14 @@
+import dotevn from "dotenv";
+dotevn.config();
 import * as redis from "redis";
 import { createApp } from "./app";
-
-const PORT = 4000;
+const { PORT, REDIS_URL } = process.env;
+if (!PORT) throw new Error("PORT is required");
+if (!REDIS_URL) throw new Error("REDIS_URL is required");
 
 const startServer = async () => {
   const client = redis.createClient({
-    url: "redis://localhost:6379",
+    url: REDIS_URL,
   });
   await client.connect();
 

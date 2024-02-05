@@ -5,9 +5,12 @@ import * as redis from "redis";
 
 let app: App;
 let client: RedisClientType;
+
+const REDIS_URL = "redis://:abcd1234@127.0.0.1:6379";
+
 beforeAll(async () => {
   client = redis.createClient({
-    url: "redis://localhost:6379",
+    url: REDIS_URL,
   });
   await client.connect();
   app = createApp(client);
