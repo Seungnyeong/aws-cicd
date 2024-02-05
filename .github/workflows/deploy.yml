@@ -28,6 +28,7 @@ jobs:
             npm install || exit 1
             npm run build || exit 1
             sudo pkill node || exit 1
-            sudo nohup npm run start > /dev/null > 2&1 &
-            exit
+            sudo npm start & npx wait-on http://localhost:3000
           "
+        env:
+          CI: true
