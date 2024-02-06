@@ -49,8 +49,8 @@ jobs:
           git pull 
           npm install 
           npm run build 
-          sudo pkill node 
-          sudo npm run start & npx wait-on http://localhost && exit
+          sudo pm2 reload
+          exit
           "
         env:
           CI: true
