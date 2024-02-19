@@ -14,9 +14,24 @@ const startServer = async () => {
   await client.connect();
 
   const app = createApp(client);
-  app.listen(PORT, () => {
-    console.log(`${PORT} app lisenting`);
+  const server = app.listen(PORT, () => {
+    console.log(`${PORT} app lisenting 123`);
+  });
+
+  return server;
+};
+
+const server = startServer();
+
+const gracefullShutdown = async () => {
+  const _server = await server;
+  _server.close(() => {
+    // DB 커넥션 종료등을 해 주면 됨.
+    console.log("gracefull shutdown!");
+    process.exit();
   });
 };
 
-startServer();
+process.on("SIGTERM", () => gracefullShutdown);
+
+process.on("SIGINT", gracefullShutdown);
