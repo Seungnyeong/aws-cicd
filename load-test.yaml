@@ -1,0 +1,9 @@
+config:
+  target: http://3.39.160.24
+  phases:
+    - duration: 5
+      arrivalRate: 30
+scenarios:
+  - flow:
+      - get:
+          url: "/fibonacci/10"
